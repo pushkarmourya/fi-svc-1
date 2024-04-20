@@ -1,0 +1,71 @@
+### API Documentation
+
+This API documentation outlines the endpoints and functionality of the Financial Insights Service API.
+
+---
+
+#### 1. Add Transaction
+
+Endpoint: POST `/api/add-transaction`
+Description: Adds a new transaction to the database.
+Request Body:
+ date: Transaction date (YYYY-MM-DD format)
+ amount: Transaction amount
+ category_id: Category ID of the transaction
+ description: Transaction description
+Response:
+ message: Indicates the status of the transaction addition process
+ transactionId: ID of the newly added transaction
+Error Response:
+  Status Code: 500
+  Response Body: `{ "message": "Error adding transaction" }`
+
+---
+
+#### 2. Get Transactions
+
+Endpoint: GET `/api/transactions`
+Description: Retrieves a list of transactions with pagination support.
+Query Parameters:
+ page: Page number (default: 1)
+ limit: Number of transactions per page (default: 10)
+Response:
+ total: Total number of transactions
+ data: Array of transaction objects containing transaction details and category information
+Error Response:
+  Status Code: 500
+  Response Body: `{ "message": "Error fetching transactions" }`
+
+---
+
+#### 3. Get Chart Data
+
+Endpoint: GET `/api/chart-data`
+Description: Retrieves data for generating a chart with category-wise transaction sums.
+Response:
+  Array of objects containing:
+   category_id: Category ID
+   name: Category name
+   color: Category color (Hex code)
+   sum: Total amount spent in the category
+Error Response:
+  Status Code: 500
+  Response Body: `{ "message": "Error fetching chart data" }`
+
+---
+
+#### 4. Get Categories
+
+Endpoint: GET `/api/categories`
+Description: Retrieves a list of all categories.
+Response:
+  Array of objects containing category details:
+   id: Category ID
+   name: Category name
+   color: Category color (Hex code)
+Error Response:
+  Status Code: 500
+  Response Body: `{ "message": "Error fetching categories" }`
+
+---
+
